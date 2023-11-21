@@ -3,20 +3,21 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:weather_app/model/weather.dart';
+import 'package:weather_app/model/weatherr.dart';
 
-class WeatherService {
-  static const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
+class WeatherServicee {
+  static const BASE_URL = "https://api.openweathermap.org/data/2.5/temp";
   
 
   final String apiKey;
 
-  WeatherService(this.apiKey);
+  WeatherServicee(this.apiKey);
 
-  Future<Weather> getWeather(String cityName) async {
+  Future<Weatherr> getWeather(String cityName) async {
     final response = await http.get(Uri.parse('$BASE_URL?q=$cityName&appid=$apiKey&units=metric'));
 
     if (response.statusCode == 200) {
-      return Weather.fromJson(jsonDecode(response.body));
+      return Weatherr.fromJson(jsonDecode(response.body));
     } else {
       final errorMessage = response.statusCode == 401
           ? "Unauthorized request. Please check your API key."

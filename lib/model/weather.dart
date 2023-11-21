@@ -14,6 +14,7 @@ class Weather {
       cityName:json['name'],
       temperature: json['main']['temp'] ,
       mainCondition : json['weather'][0]['description'],
+      
     );
   }
 }
