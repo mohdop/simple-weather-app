@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:weather_app/model/weather.dart';
 import 'package:weather_app/model/weatherr.dart';
+import 'package:weather_app/pages/widgets.dart';
 import 'package:weather_app/service/weatherService.dart';
 
 class weather_app extends StatefulWidget {
@@ -57,6 +58,9 @@ class _weather_appState extends State<weather_app> {
     return "assets/sun.json";
   }
  }
+
+
+ 
   // initState
 @override
 void initState() {
@@ -73,13 +77,12 @@ Widget build(BuildContext context) {
   body: Container(
     decoration: BoxDecoration(
       gradient: LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [Colors.white,Colors.blue[100]!,Colors.blueGrey], // Replace with your desired colors
+        begin: Alignment.topRight,
+        end: Alignment.bottomLeft,
+        colors: [Colors.blue[100]!,Colors.blue[200]!,Colors.blue[300]!], // Replace with your desired colors
       ),
     ),
     child: Column(
-      
       children: [
          Padding(
            padding: const EdgeInsets.only(top:50.0),
@@ -171,7 +174,35 @@ Widget build(BuildContext context) {
               )
             ],
           ),
+        ),
+        Padding(
+          padding:  EdgeInsets.all(12),
+          child: Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(28),
+                          
+                        ),
+            child: Padding(padding: EdgeInsets.only(top: 12,bottom: 12),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(children: [
+               forecast("11", "assets/cloud.json", "${_weather?.temperature.round()}°C","4%"),
+               forecast("12", "assets/sun.json", "${_weather?.temperature.round()}°C","0%"),
+               forecast("13", "assets/cloudy sun.json", "${_weather?.temperature.round()}°C","2%"),
+               forecast("14", "assets/rain.json", "${_weather?.temperature.round()}°C","8%"),
+               forecast("15", "assets/thunder.json", "${_weather?.temperature.round()}°C","12%"),
+               forecast("16", "assets/cloud.json", "${_weather?.temperature.round()}°C","4%"),
+               forecast("17", "assets/cloud.json", "${_weather?.temperature.round()}°C","4%"),
+               forecast("18", "assets/cloud.json", "${_weather?.temperature.round()}°C","4%"),
+
+              ],),
+            ),
+            ),
+          ),
         )
+
       ],
       
     ),
@@ -182,43 +213,3 @@ Widget build(BuildContext context) {
 
 }
 
-
-Widget infoWeather(IconData icone, String measured, String value){
-  return Padding(
-    padding: const EdgeInsets.only(bottom:12.0),
-    child: Container(
-                        height: 130,
-                        width: 180,
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.4),
-                          borderRadius: BorderRadius.circular(28),
-                          
-                        ),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(14.0),
-                              child: Row(
-                                children: [Icon(icone,color: Colors.white,size: 40,)],
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                children: [
-                                  Text("$measured",style: TextStyle(color: Colors.white),)
-                                ],
-                              ),
-                            ),Padding(
-                              padding: const EdgeInsets.only(top:4.0,left: 10),
-                              child: Row(
-                                children: [
-                                  Text("$value",style: TextStyle(color: Colors.white))
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-  );
-}

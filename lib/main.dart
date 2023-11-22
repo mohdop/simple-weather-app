@@ -18,6 +18,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(scaffoldBackgroundColor: Colors.transparent),
       home: weather_app()
-      );
+    );
   }
 }
