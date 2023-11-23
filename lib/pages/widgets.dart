@@ -43,25 +43,76 @@ Widget infoWeather(IconData icone, String measured, String value){
 }
 
 Widget forecast(String hour, String animation,String weather,String precipataions){
-  bool isTapped = false;
   return  Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Text(hour+":00",style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20
-                      ),),
-                      Lottie.asset(animation,height: 65,width: 65),
-                      Text(weather,
-                    style: TextStyle(fontSize: 20,color: Colors.white),),
-                    Row(
-                      children: [
-                        Icon(CupertinoIcons.drop,color: Colors.white,size: 16,),
-                        Text(precipataions,style: TextStyle(fontSize: 16,color: Colors.white),)
-                      ],
-                    )
-                    ],
-                  ),
-                );
+    padding: const EdgeInsets.all(8.0),
+    child: Column(
+      children: [
+        Text(hour+":00",style: TextStyle(
+          color: Colors.white,
+          fontSize: 20
+        ),),
+        Lottie.asset(animation,height: 65,width: 65),
+        Text(weather,
+      style: TextStyle(fontSize: 20,color: Colors.white),),
+      Row(
+        children: [
+          Icon(CupertinoIcons.drop,color: Colors.white,size: 16,),
+          Text(precipataions,style: TextStyle(fontSize: 16,color: Colors.white),)
+        ],
+      )
+      ],
+    ),
+  );
+}
+
+class forecastt extends StatefulWidget {
+  final String? hour;
+  final String? animation;
+  final String? weather;
+  final String? precipataions;
+  
+  const forecastt({this.hour,this.animation,this.weather,this.precipataions});
+  
+  @override
+  State<forecastt> createState() => _forecasttState();
+}
+
+class _forecasttState extends State<forecastt> {
+  bool isTapped = false;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: GestureDetector(
+      onDoubleTap: () {
+        setState(() {
+          isTapped = !isTapped;
+        });
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: isTapped? Colors.white.withOpacity(0.3):Colors.transparent,
+          borderRadius: BorderRadius.circular(8)
+        ),
+        child: Column(
+          children: [
+            Text(widget.hour! +":00",style: TextStyle(
+              color: Colors.white,
+              fontSize: 20
+            ),),
+            Lottie.asset(widget.animation!,height: 65,width: 65),
+            Text(widget.weather!,
+          style: TextStyle(fontSize: 20,color: Colors.white),),
+          Row(
+            children: [
+              Icon(CupertinoIcons.drop,color: Colors.white,size: 16,),
+              Text(widget.precipataions!,style: TextStyle(fontSize: 16,color: Colors.white),)
+            ],
+          )
+          ],
+        ),
+      ),
+    ),
+  );
+  }
 }

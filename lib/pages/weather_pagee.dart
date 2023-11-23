@@ -188,14 +188,38 @@ Widget build(BuildContext context) {
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(children: [
-               forecast("11", "assets/cloud.json", "${_weather?.temperature.round()}°C","4%"),
-               forecast("12", "assets/sun.json", "${_weather?.temperature.round()}°C","0%"),
-               forecast("13", "assets/cloudy sun.json", "${_weather?.temperature.round()}°C","2%"),
-               forecast("14", "assets/rain.json", "${_weather?.temperature.round()}°C","8%"),
-               forecast("15", "assets/thunder.json", "${_weather?.temperature.round()}°C","12%"),
-               forecast("16", "assets/cloud.json", "${_weather?.temperature.round()}°C","4%"),
-               forecast("17", "assets/cloud.json", "${_weather?.temperature.round()}°C","4%"),
-               forecast("18", "assets/cloud.json", "${_weather?.temperature.round()}°C","4%"),
+               forecastt(
+                hour: "11", 
+                weather: "${_weather?.temperature.round()}°C",
+                animation: "assets/cloud.json",
+                precipataions: "4%",
+                ),
+                forecastt(
+                hour: "12", 
+                weather: "${_weather?.temperature.round()}°C",
+                animation: "assets/sun.json",
+                precipataions: "0%",
+                ),forecastt(
+                hour: "13", 
+                weather: "${_weather?.temperature.round()}°C",
+                animation: "assets/cloudy sun.json",
+                precipataions: "2%",
+                ),forecastt(
+                hour: "14", 
+                weather: "${_weather?.temperature.round()}°C",
+                animation: "assets/rain.json",
+                precipataions: "8%",
+                ),forecastt(
+                hour: "15", 
+                weather: "${_weather?.temperature.round()}°C",
+                animation: "assets/thunder.json",
+                precipataions: "12%",
+                ),forecastt(
+                hour: "16", 
+                weather: "${_weather?.temperature.round()}°C",
+                animation: "assets/cloud.json",
+                precipataions: "4%",
+                ),
 
               ],),
             ),
