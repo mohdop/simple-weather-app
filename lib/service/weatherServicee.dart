@@ -81,6 +81,5 @@ class WeatherServicee {
     String? country = placemarks.isNotEmpty ? placemarks[0].country : null;
     
     return country ?? "Unknown country";
-    
   }
 }
